@@ -1184,7 +1184,7 @@ function isEqualKeyset(aSlaveKeyset, aMasterKeyset) {
 }
 
 exports.storeScript = function (aUser, aMeta, aBuf, aUpdate, aCallback) {
-  var isLib = !!findMeta(aMeta, 'UserLibrary');
+  var isLib = Boolean(findMeta(aMeta, 'UserLibrary'));
   var userName = findMeta(aMeta, 'OpenUserJS.author.0.value') || aUser.name;
   var scriptName = null;
   var scriptDescription = null;

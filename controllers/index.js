@@ -288,7 +288,7 @@ exports.register = function (aReq, aRes) {
 
       //
       aRes.header('Content-Security-Policy',
-        'default-src \'none\'' +
+        String('default-src \'none\'' +
         '; base-uri'    + defaultCSP +
         '; child-src'   + defaultCSP +
         '; connect-src' + defaultCSP + captchaCSP +
@@ -298,8 +298,7 @@ exports.register = function (aReq, aRes) {
         '; script-src'  + defaultCSP + captchaCSP +
         '; style-src'   + defaultCSP + captchaCSP +
         '; form-action' + defaultCSP +
-        '; navigate-to' + defaultCSP +
-        ''
+        '; navigate-to' + defaultCSP)
       );
 
       aRes.render('pages/loginPage', options);
