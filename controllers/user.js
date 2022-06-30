@@ -425,17 +425,17 @@ exports.userListPage = function (aReq, aRes, aNext) {
 
     // Empty list
     options.userListIsEmptyMessage = 'No users.';
-    if (!!options.isFlagged) {
+    if (options.isFlagged) {
       options.userListIsEmptyMessage = 'No flagged users.';
     } else if (options.searchBarValue) {
       options.userListIsEmptyMessage = 'We couldn\'t find any users by this name.';
     }
 
     // Heading
-    options.pageHeading = !!options.isFlagged ? 'Flagged Users' : 'Users';
+    options.pageHeading = options.isFlagged ? 'Flagged Users' : 'Users';
 
     // Page metadata
-    if (!!options.isFlagged) {
+    if (options.isFlagged) {
       pageMetadata(options, ['Flagged Users', 'Moderation']);
     }
   }
@@ -452,7 +452,7 @@ exports.userListPage = function (aReq, aRes, aNext) {
 
     async.parallel([
       function (aCallback) {
-        if (!!!options.isFlagged || !options.isMod) {  // NOTE: Watchpoint
+        if (!options.isFlagged || !options.isMod) {  // NOTE: Watchpoint
           aCallback();
           return;
         }
@@ -737,7 +737,7 @@ exports.userScriptListPage = function (aReq, aRes, aNext) {
 
       // Empty list
       options.scriptListIsEmptyMessage = 'No scripts.';
-      if (!!options.isFlagged) {
+      if (options.isFlagged) {
         if (options.librariesOnly) {
           options.scriptListIsEmptyMessage = 'No flagged libraries.';
         } else {
@@ -762,7 +762,7 @@ exports.userScriptListPage = function (aReq, aRes, aNext) {
 
       async.parallel([
         function (aCallback) {
-          if (!!!options.isFlagged || !options.isMod) {  // NOTE: Watchpoint
+          if (!options.isFlagged || !options.isMod) {  // NOTE: Watchpoint
             aCallback();
             return;
           }
@@ -2105,7 +2105,7 @@ exports.uploadScript = function (aReq, aRes, aNext) {
               statusMessage: msg
             });
             return;
-          } else if (isLib && !!!scriptStorage.findMeta(aMeta, 'UserLibrary')) {
+          } else if (isLib && !scriptStorage.findMeta(aMeta, 'UserLibrary')) {
               msg = 'UserLibrary metadata block missing.';
               statusCodePage(aReq, aRes, aNext, {
                 statusCode: 400,
@@ -2320,7 +2320,7 @@ exports.submitSource = function (aReq, aRes, aNext) {
       var name = null;
       var hasName = false;
 
-      if (!!!scriptStorage.findMeta(aMeta, 'UserScript')) {
+      if (!scriptStorage.findMeta(aMeta, 'UserScript')) {
         statusCodePage(aReq, aRes, aNext, {
           statusCode: 400,
           statusMessage: 'UserScript metadata block missing.'
@@ -2360,7 +2360,7 @@ exports.submitSource = function (aReq, aRes, aNext) {
       var name = null;
       var hasName = false;
 
-      if (!!scriptStorage.findMeta(aMeta, 'UserLibrary')) {
+      if (scriptStorage.findMeta(aMeta, 'UserLibrary')) {
         statusCodePage(aReq, aRes, aNext, {
           statusCode: 400,
           statusMessage:
