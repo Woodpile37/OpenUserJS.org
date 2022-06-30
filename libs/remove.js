@@ -387,7 +387,7 @@ exports.findDeadorAlive = function (aModel, aQuery, aUser, aCallback) {
       return;
     }
 
-    if (modelName !== 'User' && -1 === modelNames.indexOf(modelName)) {
+    if (modelName !== 'User' && modelNames.indexOf(modelName) === -1) {
       aCallback(null, null, null);
       return;
     }
