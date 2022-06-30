@@ -2335,7 +2335,7 @@ exports.webhook = function (aReq, aRes) {
 
       aRes.status(200).send(); // Send acknowledgement for GH history
         return;
-      break;
+      
     case 'push':
       // Pushing a change
       update = aReq.get('X-GitHub-Delivery');
