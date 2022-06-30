@@ -1916,7 +1916,7 @@ var parseJavascriptBlob = function (aJavascriptBlob) {
   }
 
   m = rBlobPath.exec(aJavascriptBlob.path);
-  aJavascriptBlob.isUserJS = !!m[4]; // .user exists
+  aJavascriptBlob.isUserJS = Boolean(m[4]); // .user exists
   aJavascriptBlob.isJSLibrary = !m[4]; // .user doesn't exist
 
   aJavascriptBlob.path = {
@@ -2098,7 +2098,7 @@ exports.uploadScript = function (aReq, aRes, aNext) {
         scriptStorage.getMeta(bufs, function (aMeta) {
           var msg = null;
 
-          if (!isLib && !!scriptStorage.findMeta(aMeta, 'UserLibrary')) {
+          if (!isLib && Boolean(scriptStorage.findMeta(aMeta, 'UserLibrary'))) {
             msg = 'UserLibrary metadata block found while attempting to upload as a UserScript.';
             statusCodePage(aReq, aRes, aNext, {
               statusCode: 400,

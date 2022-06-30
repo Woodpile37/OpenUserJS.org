@@ -498,7 +498,7 @@ var parseScript = function (aScript) {
 
   // CVE
   CVES = findMeta(script.meta, 'OpenUserJS.CVE');
-  if (!!CVES && script.meta['OpenUserJS'].CVE.length > 0) {
+  if (Boolean(CVES) && script.meta['OpenUserJS'].CVE.length > 0) {
     script.hasCVE = true;
     script.CVES = CVES;
 
@@ -1076,7 +1076,7 @@ var parseCategoryUnknown = function (aCategoryUnknownSlug) {
   var scriptName = null;
 
   if (isScriptIssue) {
-    category.isScriptIssue = !!isScriptIssue;
+    category.isScriptIssue = Boolean(isScriptIssue);
 
     scriptAuthorNameSlug = isScriptIssue[2];
     scriptNameSlug = isScriptIssue[4];

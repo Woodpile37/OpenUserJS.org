@@ -229,7 +229,7 @@ RepoManager.prototype.loadScripts = function (aUpdate, aCallback) {
         if (thisBuf.byteLength <= settings.maximum_upload_script_size) {
           scriptStorage.getMeta(aBufs, function (aMeta) {
             if (aMeta) {
-              scriptStorage.storeScript(that.user, aMeta, thisBuf, !!aUpdate,
+              scriptStorage.storeScript(that.user, aMeta, thisBuf, Boolean(aUpdate),
                 function (aErr, aScript) {
                   if (aErr || !aScript) {
                     msg = (aErr instanceof statusError ? aErr.status.message : aErr.message)

@@ -67,21 +67,21 @@ module.exports = function (aApp) {
     }
   }
 
-  aApp.use(staticRateLimiter, express.static(path.join(__dirname, 'public'), { maxage: day * 1 }));
+  aApp.use(staticRateLimiter, express.static(path.join(__dirname, 'public'), { maxage: Number(day) }));
 
   serveModule('/redist/npm/', 'ace-builds/src/', 7);
 
   serveModule('/redist/npm/', 'animate.css/', {
-    'animate.css': { maxage: day * 1 }
+    'animate.css': { maxage: Number(day) }
   });
 
   serveModule('/redist/npm/', 'bootstrap/', {
-    'dist/js/bootstrap.js': { maxage: day * 1 }
+    'dist/js/bootstrap.js': { maxage: Number(day) }
   });
 
   serveModule('/redist/npm/', 'bootstrap-markdown/', {
-    'js/bootstrap-markdown.js': { maxage: day * 1 },
-    'css/bootstrap-markdown.min.css': { maxage: day * 1 }
+    'js/bootstrap-markdown.js': { maxage: Number(day) },
+    'css/bootstrap-markdown.min.css': { maxage: Number(day) }
   });
 
   serveModule('/redist/npm/', 'clipboard/', {
@@ -89,7 +89,7 @@ module.exports = function (aApp) {
   });
 
   serveModule('/redist/npm/', 'font-awesome/', {
-    'css/font-awesome.min.css': { maxage: day * 1 },
+    'css/font-awesome.min.css': { maxage: Number(day) },
     'fonts/fontawesome-webfont.eot': { maxage: day * 7 },
     'fonts/fontawesome-webfont.svg': { maxage: day * 7 },
     'fonts/fontawesome-webfont.ttf': { maxage: day * 7 },
@@ -99,7 +99,7 @@ module.exports = function (aApp) {
   });
 
   serveModule('/redist/npm/', 'highlight.js/', {
-    'styles/github.css': { maxage: day * 1 }
+    'styles/github.css': { maxage: Number(day) }
   });
 
   serveModule('/redist/npm/', 'jquery/', {
@@ -115,11 +115,11 @@ module.exports = function (aApp) {
   });
 
   serveModule('/redist/npm/', 'marked/', {
-    'lib/marked.cjs': { maxage: day * 1 }
+    'lib/marked.cjs': { maxage: Number(day) }
   });
 
   serveModule('/redist/npm/', 'octicons/', {
-    'build/font/octicons.css': { maxage: day * 1 },
+    'build/font/octicons.css': { maxage: Number(day) },
     'build/font/octicons.eot': { maxage: day * 7 },
     'build/font/octicons.svg': { maxage: day * 7 },
     'build/font/octicons.ttf': { maxage: day * 7 },
@@ -128,14 +128,14 @@ module.exports = function (aApp) {
   });
 
   serveModule('/redist/npm/', 'select2/', {
-    'select2.js': { maxage: day * 1 },
-    'select2.css': { maxage: day * 1 },
+    'select2.js': { maxage: Number(day) },
+    'select2.css': { maxage: Number(day) },
     'select2.png': { maxage: day * 30 },
     'select2x2.png': { maxage: day * 30 },
     'select2-spinner.gif': { maxage: day * 30 }
   });
 
   serveModule('/redist/npm/', 'select2-bootstrap-css/', {
-    'select2-bootstrap.css': { maxage: day * 1 }
+    'select2-bootstrap.css': { maxage: Number(day) }
   });
 };
