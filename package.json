@@ -39,7 +39,7 @@
     "media-type": "0.3.1",
     "method-override": "3.0.0",
     "mime-db": "1.52.0",
-    "moment": "2.29.3",
+    "moment": "2.29.4",
     "moment-duration-format": "2.3.2",
     "mongodb": "3.7.3",
     "mongoose": "5.13.20",
